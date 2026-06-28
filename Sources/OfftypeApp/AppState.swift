@@ -10,6 +10,9 @@ import Eval
 import Telemetry
 import Injection
 import HUD
+import ComputerUse
+import ScreenContext
+import SecureStore
 
 /// The composition root. Owns every module and wires the live pipeline:
 ///
@@ -44,13 +47,24 @@ public final class AppState {
     // On-device learning store (nil only if SQLite can't open — the app still
     // runs, just without persistence across launches).
     private let store: Store?
-    private let telemetry: Telemetry
+    let telemetry: Telemetry
+
+    // Computer-use (M3): key in Keychain; deterministic macro replay is the payoff.
+    let keychain = KeychainStore()
+    let crystallizer = MacroCrystallizer()
+    var lastMacro: ComputerUseMacro?
+    var pendingCUConfirmation: PendingComputerUseConfirmation?
+    /// When false (default), computer-use runs DRY: it plans + crystallizes macros
+    /// without moving your mouse/keyboard. Flip on for a rehearsed live run.
+    var computerUseExecuteForReal = false
+    /// Held across an async run so a safety confirmation can resume the same loop.
+    var cuAgent: ComputerUseAgent?
 
     // Learned state held in memory for the live pipeline; loaded from `store` at
     // launch. Empty rules == passthrough, so dictation works from first run.
     private var rules: [Rule] = []
     private var dictionary: [DictionaryEntry] = []
-    private var flags = FeatureFlags.demoDefault
+    var flags = FeatureFlags.demoDefault
 
     private var isCapturing = false
     /// The last (raw, final) pair — seeds the one-tap correction.
@@ -194,7 +208,7 @@ public final class AppState {
         Log.learning.notice("Crystallized \(outcome.rules.count, privacy: .public) rules, \(outcome.terms.count, privacy: .public) terms")
     }
 
-    private func persistStats() {
+    func persistStats() {
         guard let store else { return }
         try? store.stats.save(telemetry.stats)
     }
