@@ -71,6 +71,8 @@ let package = Package(
         .testTarget(name: "TranscriptionTests", dependencies: ["Transcription", "OfftypeCore"]),
         .testTarget(name: "LearningEngineTests", dependencies: ["LearningEngine", "OfftypeCore"]),
         .testTarget(name: "EvalTests", dependencies: ["Eval", "LearningEngine", "OfftypeCore"]),
+        .testTarget(name: "PersistenceTests", dependencies: ["Persistence", "OfftypeCore"]),
+        .testTarget(name: "TelemetryTests", dependencies: ["Telemetry", "OfftypeCore"]),
         .testTarget(name: "InjectionTests", dependencies: ["Injection", "OfftypeCore"]),
         .testTarget(name: "SafetyGateTests", dependencies: ["ComputerUse", "OfftypeCore"]),
         .testTarget(name: "CoordinateMapperTests", dependencies: ["ComputerUse", "OfftypeCore"]),
