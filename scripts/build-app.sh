@@ -33,6 +33,10 @@ mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 cp "$BIN_DIR/$APP_NAME" "$APP/Contents/MacOS/$APP_NAME"
 cp Resources/Info.plist "$APP/Contents/Info.plist"
 
+# Bundle the frozen demo fixtures so the learning demo works on any machine.
+mkdir -p "$APP/Contents/Resources/demo"
+cp demo/*.json "$APP/Contents/Resources/demo/" 2>/dev/null || true
+
 SIGN_ARGS=(--force --timestamp=none --entitlements Resources/Offtype.entitlements --sign "$SIGN_ID")
 if [ "$HARDENED" = true ]; then SIGN_ARGS=(--options runtime "${SIGN_ARGS[@]}"); fi
 echo "▶ codesign ($([ "$HARDENED" = true ] && echo hardened || echo dev))"
