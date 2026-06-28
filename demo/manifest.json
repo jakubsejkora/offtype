@@ -1,0 +1,74 @@
+[
+  {
+    "id": "h1",
+    "groundTruth": "Push the Offtype eval harness to Kuba before standup.",
+    "rawASR": "Push the off type evil harness to Cuba before standup.",
+    "properNouns": ["Offtype", "Kuba"]
+  },
+  {
+    "id": "h2",
+    "groundTruth": "Ask Kuba to mirror the GemmaQuant weights onto Hetzner.",
+    "rawASR": "Ask Cuba to mirror the Gemma Quant weights onto Hetzner.",
+    "properNouns": ["Kuba", "GemmaQuant", "Hetzner"]
+  },
+  {
+    "id": "h3",
+    "groundTruth": "Run the Offtype eval harness on Parakeet then ping Kuba.",
+    "rawASR": "Run the off type evil harness on Parakeet then ping Cuba.",
+    "properNouns": ["Offtype", "Parakeet", "Kuba"]
+  },
+  {
+    "id": "h4",
+    "groundTruth": "Kuba fine-tuned GemmaQuant on Hetzner for the Offtype demo.",
+    "rawASR": "Cuba fine-tuned Gemma Quant on Hetzner for the off type demo.",
+    "properNouns": ["Kuba", "GemmaQuant", "Offtype", "Hetzner"]
+  },
+  {
+    "id": "h5",
+    "groundTruth": "Kuba shipped LoRAcast alongside the Offtype harness.",
+    "rawASR": "Cuba shipped Laura cast alongside the off type harness.",
+    "properNouns": ["Kuba", "LoRAcast", "Offtype"]
+  },
+  {
+    "id": "h6",
+    "groundTruth": "PatchCI rebuilt Qwen on the Offtype eval harness.",
+    "rawASR": "patch CI rebuilt Quinn on the off type evil harness.",
+    "properNouns": ["PatchCI", "Qwen", "Offtype"]
+  },
+  {
+    "id": "h7",
+    "groundTruth": "Kuba moved Antigravity and Atypika onto Hetzner.",
+    "rawASR": "Cuba moved anti gravity and a typika onto Hetzner.",
+    "properNouns": ["Kuba", "Antigravity", "Atypika", "Hetzner"]
+  },
+  {
+    "id": "h8",
+    "groundTruth": "GemmaQuant won the Silicon Rally on Parakeet.",
+    "rawASR": "Gemma Quant won the silicon rally on Parakeet.",
+    "properNouns": ["GemmaQuant", "Silicon Rally", "Parakeet"]
+  },
+  {
+    "id": "h9",
+    "groundTruth": "Send the Offtype eval logs to Kuba and ping Hetzner.",
+    "rawASR": "Send the off type evil logs to Cuba and ping Hetzner.",
+    "properNouns": ["Offtype", "Kuba", "Hetzner"]
+  },
+  {
+    "id": "h10",
+    "groundTruth": "Ping Kuba once the Offtype harness is green.",
+    "rawASR": "Ping Cuba once the off type harness is green.",
+    "properNouns": ["Kuba", "Offtype"]
+  },
+  {
+    "id": "h11",
+    "groundTruth": "Benchmark GemmaQuant against Parakeet in the eval harness.",
+    "rawASR": "Benchmark Gemma Quant against Parakeet in the evil harness.",
+    "properNouns": ["GemmaQuant", "Parakeet"]
+  },
+  {
+    "id": "h12",
+    "groundTruth": "Kuba ported Qwen and GemmaQuant to the Offtype eval harness.",
+    "rawASR": "Cuba ported Quinn and Gemma Quant to the off type evil harness.",
+    "properNouns": ["Kuba", "Qwen", "GemmaQuant", "Offtype"]
+  }
+]

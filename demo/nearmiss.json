@@ -1,0 +1,44 @@
+[
+  {
+    "id": "n1",
+    "groundTruth": "We spent a relaxing week in Cuba last winter.",
+    "rawASR": "We spent a relaxing week in Cuba last winter.",
+    "properNouns": ["Cuba"]
+  },
+  {
+    "id": "n2",
+    "groundTruth": "The villain had an evil and cunning plan.",
+    "rawASR": "The villain had an evil and cunning plan.",
+    "properNouns": []
+  },
+  {
+    "id": "n3",
+    "groundTruth": "Gemma is a family of open models from Google.",
+    "rawASR": "Gemma is a family of open models from Google.",
+    "properNouns": ["Gemma"]
+  },
+  {
+    "id": "n4",
+    "groundTruth": "A wild parakeet landed on the balcony railing.",
+    "rawASR": "A wild parakeet landed on the balcony railing.",
+    "properNouns": []
+  },
+  {
+    "id": "n5",
+    "groundTruth": "Please switch it off. Type the command again.",
+    "rawASR": "Please switch it off. Type the command again.",
+    "properNouns": []
+  },
+  {
+    "id": "n6",
+    "groundTruth": "The Cuban cigars from Cuba are world famous.",
+    "rawASR": "The Cuban cigars from Cuba are world famous.",
+    "properNouns": ["Cuba"]
+  },
+  {
+    "id": "n7",
+    "groundTruth": "Kuba already prefers his name spelled correctly.",
+    "rawASR": "Kuba already prefers his name spelled correctly.",
+    "properNouns": ["Kuba"]
+  }
+]
