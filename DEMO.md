@@ -61,6 +61,10 @@ It mis-hears the jargon (off type / Cuba / Gemma Quant) — the **debug strip sh
 
 ---
 
+## Quitting Offtype
+
+It's a **menu-bar-only app** — no Dock icon, and it **won't appear in Force Quit**. Quit it from the **waveform menu-bar icon → "Quit Offtype"**. If the icon is hidden behind the notch (crowded menu bar), run **`scripts/stop.sh`** (or `pkill -x Offtype`).
+
 ## If something flakes
 
 - **Mic mis-hears / room noise:** the metric path (**Run Learning Demo**) uses cached audio and is deterministic — it always lands. The live dictation is just the human intro; skip it if needed.

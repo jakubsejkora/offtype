@@ -11,8 +11,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        item.button?.title = "◎"
-        item.button?.toolTip = "Offtype — every correction becomes a rule"
+        if let icon = NSImage(systemSymbolName: "waveform.circle.fill", accessibilityDescription: "Offtype") {
+            icon.isTemplate = true
+            item.button?.image = icon
+        } else {
+            item.button?.title = "◎"
+        }
+        item.button?.toolTip = "Offtype — every correction becomes a rule (click for menu · Quit to exit)"
         item.menu = buildMenu()
         statusItem = item
 
