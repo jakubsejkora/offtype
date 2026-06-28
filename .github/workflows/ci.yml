@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  # Environment-independent quality gates — always run, always meaningful.
+  secrets:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITLEAKS_ENABLE_UPLOAD_ARTIFACT: "false"
+      - name: No Gemini API key in tracked files
+        run: |
+          if git grep -nE 'AIza[0-9A-Za-z_-]{20,}' -- . ':(exclude).github/workflows/*'; then
+            echo "::error::Found a Google API key pattern in tracked files"; exit 1
+          fi
+          echo "OK: no AIza… key found in tracked files"
+
+  # Full build/test requires the macOS 26 SDK; informational until hosted
+  # runners ship it (does not block the badge).
+  build-test:
+    name: Build & test (macOS 26 SDK)
+    runs-on: macos-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: swift build
+        run: swift build
+      - name: swift test
+        run: swift test
+      - name: No Gemini API key in built binary
+        run: |
+          BIN="$(swift build --show-bin-path)/Offtype"
+          if [ -f "$BIN" ] && strings "$BIN" | grep -qE 'AIza[0-9A-Za-z_-]{20,}'; then
+            echo "::error::Found a Google API key in the built binary"; exit 1
+          fi
+          echo "OK"

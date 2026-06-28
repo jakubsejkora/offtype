@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleName</key>
+    <string>Offtype</string>
+    <key>CFBundleDisplayName</key>
+    <string>Offtype</string>
+    <key>CFBundleIdentifier</key>
+    <string>cz.sejkora.offtype</string>
+    <key>CFBundleExecutable</key>
+    <string>Offtype</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>0.1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>26.0</string>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+    <!-- Menu-bar only: no Dock icon, no app menu. -->
+    <key>LSUIElement</key>
+    <true/>
+    <!-- Microphone is requested on first dictation. Audio is transcribed on-device and never leaves the Mac. -->
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Offtype transcribes your speech on-device. Audio never leaves your Mac.</string>
+    <!-- Screen Recording (optional, for screen-awareness / computer-use) is requested only when you enable those features. -->
+    <key>NSScreenCaptureUsageDescription</key>
+    <string>Offtype reads the current screen only when you enable screen-awareness or computer-use, to ground actions and learn on-screen names.</string>
+    <!-- NOTE: Accessibility, Input Monitoring, and Screen Recording have no Info.plist usage-string keys; they are granted in System Settings. CGEvent injection needs no NSAppleEventsUsageDescription. -->
+</dict>
+</plist>

@@ -1,0 +1,30 @@
+# Build
+.build/
+.swiftpm/
+DerivedData/
+*.xcodeproj
+*.o
+*.swiftmodule
+
+# Packaged app
+*.app
+dist/
+
+# Local-only strategy notes (kept out of the public repo by design)
+brainstorming/
+
+# Secrets — never commit
+*.xcconfig
+Secrets.plist
+.env
+.dev.vars
+
+# Local model weights (live at ~/Models, never in the repo)
+Models/
+
+# macOS
+.DS_Store
+
+# Demo recordings can be large; keep generated audio out unless explicitly added
+demo/audio/*.wav
+!demo/audio/.gitkeep
