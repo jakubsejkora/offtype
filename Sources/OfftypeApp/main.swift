@@ -17,7 +17,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem = item
 
         appState.start()
-        // OnboardingWindow.presentIfNeeded()  // re-enabled when feat/onboarding merges
+        OnboardingWindow.presentIfNeeded()
         Log.app.info("Offtype launched")
     }
 
@@ -38,6 +38,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         addItem(to: menu, "Toggle Big-Screen Mirror", #selector(toggleMirror), key: "m")
         addItem(to: menu, "Run HUD Demo (mock)", #selector(runHUDDemo))
         addItem(to: menu, "Stop Demos", #selector(stopDemos))
+        addItem(to: menu, "Welcome & Permissions…", #selector(showOnboarding))
         menu.addItem(.separator())
         menu.addItem(NSMenuItem(title: "Quit Offtype",
                                 action: #selector(NSApplication.terminate(_:)),
@@ -88,6 +89,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     @objc private func toggleMirror() { appState.toggleMirror() }
     @objc private func runHUDDemo() { appState.startHUDDemo() }
     @objc private func stopDemos() { appState.stopHUDDemo() }
+    @objc private func showOnboarding() { OnboardingWindow.present() }
 
     // MARK: - Computer-use actions
 
