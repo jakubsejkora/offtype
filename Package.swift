@@ -20,8 +20,9 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/groue/GRDB.swift.git", from: "7.0.0"),
-        // FluidAudio (Parakeet TDT v2, CoreML/ANE) is added by the Transcription
-        // implementation step once its product name/version are pinned.
+        // FluidAudio (Parakeet TDT v2, CoreML/ANE) powers on-device STT. Pinned to
+        // the latest tagged release; used ONLY by the Transcription target.
+        .package(url: "https://github.com/FluidInference/FluidAudio.git", .upToNextMajor(from: "0.15.4")),
     ],
     targets: [
         // MARK: - Pure logic (no OS permissions; fully testable)
@@ -38,7 +39,13 @@ let package = Package(
         .target(name: "AudioCapture", dependencies: ["OfftypeCore"]),
         .target(name: "Hotkey", dependencies: ["OfftypeCore"]),
         .target(name: "Injection", dependencies: ["OfftypeCore"]),
-        .target(name: "Transcription", dependencies: ["OfftypeCore"]),
+        .target(
+            name: "Transcription",
+            dependencies: [
+                "OfftypeCore",
+                .product(name: "FluidAudio", package: "FluidAudio"),
+            ]
+        ),
         .target(name: "Cleanup", dependencies: ["OfftypeCore"]),
         .target(name: "SecureStore", dependencies: ["OfftypeCore"]),
 
@@ -60,6 +67,8 @@ let package = Package(
         ),
 
         // MARK: - Tests
+        .testTarget(name: "CleanupTests", dependencies: ["Cleanup", "OfftypeCore"]),
+        .testTarget(name: "TranscriptionTests", dependencies: ["Transcription", "OfftypeCore"]),
         .testTarget(name: "LearningEngineTests", dependencies: ["LearningEngine", "OfftypeCore"]),
         .testTarget(name: "EvalTests", dependencies: ["Eval", "LearningEngine", "OfftypeCore"]),
         .testTarget(name: "InjectionTests", dependencies: ["Injection", "OfftypeCore"]),
